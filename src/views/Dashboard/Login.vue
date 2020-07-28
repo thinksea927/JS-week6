@@ -51,13 +51,13 @@ export default {
 }
 </script>
 
-<style lang="sass">
-  html,body
-    height: 100%
-  body
-    display: flex
-    justify-content: center
-    align-items: center
-  .form-group
-    max-width: 400px
+<style lang="scss">
+  html,body{
+    height: 100%}
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center}
+  .form-group{
+    max-width: 400px}
 </style>
