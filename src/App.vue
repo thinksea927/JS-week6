@@ -5,7 +5,7 @@
 </template>
 
 <style lang="scss">
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 #app {
   font-family: "Microsoft JhengHei", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
