@@ -42,7 +42,7 @@ export default {
     },
     signout () {
       document.cookie = 'hexToken=;expires=;'
-      this.$router.push('/login')
+      console.log('已登出: token已清除')
     }
   }
 }
