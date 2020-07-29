@@ -43,6 +43,7 @@ export default {
     signout () {
       document.cookie = 'hexToken=;expires=;'
       console.log('已登出: token已清除')
+      this.$router.push('/login')
     }
   }
 }
