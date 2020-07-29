@@ -11,7 +11,7 @@
           <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password" v-model="user.password" required="required"/>
         </div>
         <button class="btn btn-primary mr-3" type="submit">Log In</button>
-        <button class="btn btn-primary" type="button" @click.prevent="signout">Log Out</button>
+        <button class="btn btn-outline-primary" type="button" @click.prevent="signout">Log Out</button>
     </form>
   </div>
 </template>
