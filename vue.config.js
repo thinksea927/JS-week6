@@ -1,1 +1,3 @@
-export const publicPath = './'
+module.exports = {
+  publicPath: './'
+}
