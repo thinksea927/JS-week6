@@ -44,6 +44,7 @@ export default {
       document.cookie = 'hexToken=;expires=;'
       console.log('已登出: token已清除')
       this.$router.push('/login')
+      console.log('為什麼不會跳轉@@')
     }
   }
 }
