@@ -1,16 +1,13 @@
-<template>
-  <div>
-    <h1> 產品列表頁</h1>
-    <table>
-      <tr v-for="item in products" :key="item.id">
-        <td>{{item.title}}</td>
-        <td>{{item.content}}</td>
-        <td>
-          <router-link :to=" `/product/${item.id}`">詳細資料</router-link>
-        </td>
-      </tr>
-    </table>
-  </div>
+<template lang='pug'>
+  div
+    h1 產品列表頁
+    table
+      tbody
+        tr(v-for='item in products' :key='item.id')
+          td {{item.title}}
+          td {{item.content}}
+          td
+            router-link(:to=' `/product/${item.id}`') 詳細資料
 </template>
 
 <script>

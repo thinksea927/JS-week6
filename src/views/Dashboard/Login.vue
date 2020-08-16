@@ -1,18 +1,28 @@
 <template>
-  <div>
-    <form @submit.prevent="signin">
-      <h3>請登入</h3>
-      <div class="form-group text-left">
-          <label for="exampleInputEmail1">Email address</label>
-          <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email" v-model="user.email" requied="requied"/>
-        </div>
-        <div class="form-group text-left">
-          <label for="exampleInputPassword1">Password</label>
-          <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password" v-model="user.password" required="required"/>
-        </div>
-        <button class="btn btn-primary mr-3" type="submit">Log In</button>
-        <button class="btn btn-outline-primary" type="button" @click.prevent="signout">Log Out</button>
-    </form>
+  <div class="fullHeight d-flex justify-content-center align-items-center">
+    <div class="container">
+      <validation-observer v-slot="{ invalid }">
+        <form @submit.prevent="signin">
+          <h3>請登入後台系統</h3>
+          <div class="form-group text-left">
+            <validation-provider name="E-mail" rules="required|email" v-slot="{ errors, classes }">
+              <label for="exampleInputEmail1">Email</label>
+              <input class="form-control" :class="classes" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="請輸入您的E-mail" v-model="user.email" requied="requied"/>
+              <span class="invalid-feedback" v-if="errors[0]">{{errors[0]}}</span>
+            </validation-provider>
+          </div>
+          <div class="form-group text-left">
+            <validation-provider name="密碼" rules="required" v-slot="{ errors, classes }">
+              <label for="exampleInputPassword1">密碼</label>
+              <input class="form-control" id="exampleInputPassword1" type="password" placeholder="請輸入您的密碼" v-model="user.password" :class="classes"/>
+              <span class="invalid-feedback" v-if="errors[0]">{{errors[0]}}</span>
+            </validation-provider>
+          </div>
+            <button class="btn btn-outline-primary mr-3" type="reset">取消</button>
+            <button class="btn btn-primary px-3" type="submit" @keyup.enter="submit" :disabled="invalid">登入</button>
+        </form>
+      </validation-observer>
+    </div>
   </div>
 </template>
 
@@ -37,27 +47,27 @@ export default {
         const { expired } = res.data
         document.cookie = `hexToken=${token};expires=${new Date(expired * 1000)};`
         this.$router.push('/admin/products')
+        this.$bus.$emit('message:push', '登入成功', 'success')
       }).catch((err) => {
         console.log(err)
+        this.$bus.$emit('message:push', `登入失敗喔!${err}`, 'danger')
       })
     },
 
     signout () {
       document.cookie = 'hexToken=;expires=;'
       console.log('已登出: token已清除')
+      this.$bus.$emit('message:push', '你已經登出囉!', 'warning')
     }
 
   }
 }
 </script>
 
-<style lang="scss">
-  html,body{
-    height: 100%}
-  body{
-    display: flex;
-    justify-content: center;
-    align-items: center}
-  .form-group{
-    max-width: 400px}
+<style lang="sass" scoped>
+.fullHeight
+  height: 100vh
+.container
+  width: 300px
+
 </style>

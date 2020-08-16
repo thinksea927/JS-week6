@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div id="nav">
+    <div id="nav" class="navbar-expand-lg navbar-light mb-5" style="background-color: #dff4f8;">
       <router-link to="/">前台首頁</router-link>|
       <router-link to="/products">產品列表</router-link>|
       <router-link to="/cart">購物車</router-link>|

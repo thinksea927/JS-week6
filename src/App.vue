@@ -1,8 +1,23 @@
 <template>
   <div id="app">
     <router-view />
+    <toast />
   </div>
 </template>
+
+<script>
+import Toast from '@/components/Toast.vue'
+
+export default {
+  components: {
+    Toast
+  },
+  data () {
+    return {}
+  }
+
+}
+</script>
 
 <style lang="scss">
 @import '~bootstrap/scss/bootstrap';
